@@ -1,38 +1,94 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: monospace;
 }
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgb(93, 73, 180); /* temporary */
+  background-color: fff; /* temporary */
 }
 .calculator {
+  width: 315px;
+  height: 570px;
+  gap: 5px;
+  text-align: center;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 4px 0px rgb(0 0 0 / 9%);
+}
+.keys {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  width: 230px;
-  height: auto;
-  gap: 5px;
-  border: 1px solid black;
-  padding: 5px;
+  align-items: end;
+  gap: 14px;
+  border-radius: 12px;
 }
 button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #dfe8ef;
+  border: none;
 }
 input {
   width: 95%;
-  height: 30px;
-  font-size: 20px;
+  font-size: 56px;
+  font-weight: bold;
+  color: #30456a;
+  border: none;
+  background-color: transparent;
 }
 .display {
   text-align: right;
 }
-button.operator {
-  background-color: aqua;
+.keys {
+  background-color: #edf1f45f;
+  padding: 22px;
+}
+/* Button Colors */
+.all-clear,
+.sign,
+.percentage {
+  color: #13c787;
+}
+.operator,
+.equal {
+  color: #b04652;
+}
+.num,
+.back,
+.decimal {
+  color: #30456a;
+  font-size: 20px;
+}
+/* History */
+.history {
+  text-align: right;
+  padding-right: 20px;
+  font-size: 22px;
+}
+/* Toggle Theme */
+.theme {
+  box-shadow: 0 0 4px 0px rgb(0 0 0 / 9%);
+  width: 80px;
+  margin: 20px auto;
+  /* CSS nesting */
+  button {
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: #30456a;
+  }
+  button:hover {
+    color: white;
+    background-color: #30456a;
+  }
 }

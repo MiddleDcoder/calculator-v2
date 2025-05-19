@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator App</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <script src="index.js" defer></script>
   </head>
   <body>
     <div class="calculator">
+      <div class="theme">
+        <button class="light"><i class="bi bi-sun"></i></button
+        ><button class="dark"><i class="bi bi-moon-stars-fill"></i></button>
+      </div>
+      <div class="history">380 x 12</div>
       <input type="text" name="display" class="display" value="0" disabled />
       <div class="keys">
         <button type="button" class="all-clear">AC</button>
