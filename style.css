@@ -33,7 +33,7 @@ button {
   width: 55px;
   height: 55px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #dfe8ef;
   border: none;
 }
@@ -86,6 +86,10 @@ input {
     height: 40px;
     background-color: transparent;
     color: #30456a;
+    font-size: 14px;
+  }
+  button.dark {
+    color: #30456a46;
   }
   button:hover {
     color: white;
