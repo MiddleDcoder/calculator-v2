@@ -1,3 +1,14 @@
+:root {
+  --cal-bg: #fff;
+  --btn-bg: #dfe8ef;
+  --keys-bg: #edf1f45f;
+  --text-color: #30456a;
+  --theme-bg: transparent;
+  --btn-white: #30456a;
+  --btn-dark: #30456a46;
+  --btn-hover-color: #fff;
+  --btn-hover-bg-color: #30456a;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,9 +19,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: fff; /* temporary */
 }
 .calculator {
+  background-color: var(--cal-bg);
   width: 315px;
   height: 570px;
   gap: 5px;
@@ -34,14 +45,14 @@ button {
   height: 55px;
   border-radius: 12px;
   font-size: 18px;
-  background-color: #dfe8ef;
+  background-color: var(--btn-bg);
   border: none;
 }
 input {
   width: 95%;
   font-size: 56px;
   font-weight: bold;
-  color: #30456a;
+  color: var(--text-color);
   border: none;
   background-color: transparent;
 }
@@ -49,7 +60,7 @@ input {
   text-align: right;
 }
 .keys {
-  background-color: #edf1f45f;
+  background-color: var(--keys-bg);
   padding: 22px;
 }
 /* Button Colors */
@@ -65,7 +76,7 @@ input {
 .num,
 .back,
 .decimal {
-  color: #30456a;
+  color: var(--text-color);
   font-size: 20px;
 }
 /* History */
@@ -73,6 +84,7 @@ input {
   text-align: right;
   padding-right: 20px;
   font-size: 22px;
+  color: #30456a46;
 }
 /* Toggle Theme */
 .theme {
@@ -84,15 +96,15 @@ input {
     border-radius: 4px;
     width: 40px;
     height: 40px;
-    background-color: transparent;
-    color: #30456a;
     font-size: 14px;
+    background-color: var(--theme-bg);
+    color: var(--btn-white);
   }
   button.dark {
-    color: #30456a46;
+    color: var(--btn-dark);
   }
   button:hover {
-    color: white;
-    background-color: #30456a;
+    color: var(--btn-hover-color);
+    background-color: var(--btn-hover-bg-color);
   }
 }
