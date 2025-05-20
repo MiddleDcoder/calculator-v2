@@ -9,6 +9,17 @@
   --btn-hover-color: #fff;
   --btn-hover-bg-color: #30456a;
 }
+.dark-mode {
+  --cal-bg: #24252d;
+  --btn-bg: #24252d;
+  --keys-bg: #2c2c37;
+  --text-color: #30456a;
+  --theme-bg: #2c2c37;
+  --btn-white: #93969c;
+  --btn-dark: #fff;
+  --btn-hover-color: #24252d;
+  --btn-hover-bg-color: #fff;
+}
 * {
   box-sizing: border-box;
   margin: 0;
