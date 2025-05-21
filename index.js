@@ -9,3 +9,13 @@ theme_toggler.addEventListener("click", () => {
     localStorage.setItem("website_theme", "default");
   }
 });
+
+// Retrieving the class
+function retrieve_theme() {
+  const theme = localStorage.getItem("website_theme");
+  if (theme != null) {
+    document.body.classList.remove("default", "dark_mode");
+    document.body.classList.add(theme);
+  }
+}
+retrieve_theme();
