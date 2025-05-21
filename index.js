@@ -18,6 +18,7 @@ function retrieve_theme() {
     document.body.classList.add(theme);
   }
 }
+retrieve_theme(); // retrieve when reload
 
 // Synchronize for all tabs
 window.addEventListener("storage", () => {
