@@ -1,27 +1,24 @@
-const theme_toggler = document.querySelector(".theme");
-let bodyClassList = document.body.classList;
+const themeToggler = document.querySelector(".theme");
+const THEME_KEY = "website_theme";
+const DARK_MODE = "dark_mode";
+const DEFAULT_MODE = "default";
 
-theme_toggler.addEventListener("click", () => {
-  bodyClassList.toggle("dark_mode");
-  // Saving the setting
-  if (bodyClassList.contains("dark_mode")) {
-    localStorage.setItem("website_theme", "dark_mode");
-  } else {
-    localStorage.setItem("website_theme", "default");
-  }
-});
-
-// Retrieving the class
-function retrieve_theme() {
-  const theme = localStorage.getItem("website_theme");
-  if (theme != null) {
-    bodyClassList.remove("default", "dark_mode");
-    bodyClassList.add(theme);
-  }
+function setTheme(theme) {
+  document.body.classList.remove(DARK_MODE, DEFAULT_MODE);
+  document.body.classList.add(theme);
+  localStorage.setItem(THEME_KEY, theme);
 }
-retrieve_theme(); // retrieve when reload
 
-// Synchronize for all tabs
-window.addEventListener("storage", () => {
-  retrieve_theme();
+function retrieveTheme() {
+  const theme = localStorage.getItem(THEME_KEY) || DEFAULT_MODE;
+  setTheme(theme);
+}
+
+themeToggler.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle(DARK_MODE);
+  setTheme(isDark ? DARK_MODE : DEFAULT_MODE);
 });
+
+window.addEventListener("storage", retrieveTheme);
+
+retrieveTheme();
