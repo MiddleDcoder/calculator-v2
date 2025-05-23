@@ -13,12 +13,18 @@
     <script src="theme-selection.js" defer></script>
   </head>
   <body>
-    <!-- Rectangular switch toggler-->
-    <label class="switch">
-      <input type="checkbox" />
-      <span class="slider"></span>
-    </label>
     <div class="calculator">
+      <!-- Rectangular switch toggler-->
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+          <div class="icons">
+            <i class="bi bi-sun"></i>
+            <i class="bi bi-moon-stars-fill"></i>
+          </div>
+        </label>
+      </div>
       <div class="theme">
         <button class="light"><i class="bi bi-sun"></i></button
         ><button class="dark"><i class="bi bi-moon-stars-fill"></i></button>
