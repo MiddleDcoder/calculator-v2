@@ -4,10 +4,6 @@
   --keys-bg: #edf1f45f;
   --text-color: #30456a;
   --theme-bg: transparent;
-  --btn-white: #30456a;
-  --btn-dark: #30456a46;
-  --btn-hover-color: #fff;
-  --btn-hover-bg-color: #30456a;
 }
 .dark_mode {
   --cal-bg: #24252d;
@@ -15,10 +11,6 @@
   --keys-bg: #2c2c37;
   --text-color: #fff;
   --theme-bg: #2c2c37;
-  --btn-white: #93969c;
-  --btn-dark: #fff;
-  --btn-hover-color: #24252d;
-  --btn-hover-bg-color: #fff;
 }
 * {
   box-sizing: border-box;
@@ -97,28 +89,6 @@ input {
   font-size: 22px;
   color: #93969c;
 }
-/* Toggle Theme */
-.theme {
-  box-shadow: 0 0 4px 0px rgb(0 0 0 / 9%);
-  width: 80px;
-  margin: 20px auto;
-  /* CSS nesting */
-  button {
-    border-radius: 4px;
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
-    background-color: var(--theme-bg);
-    color: var(--btn-white);
-  }
-  button.dark {
-    color: var(--btn-dark);
-  }
-  button:hover {
-    color: var(--btn-hover-color);
-    background-color: var(--btn-hover-bg-color);
-  }
-}
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -140,9 +110,11 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-transition: 0.4s;
+  background-color: var(--theme-bg);
+  box-shadow: 0 0 4px 0px rgb(0 0 0 / 12%);
+  border-radius: 8px;
 }
 .slider:before {
   position: absolute;
@@ -154,32 +126,31 @@ input {
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 8px;
 }
 input:checked + .slider {
-  background-color: #2196f3;
-}
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  background-color: var(--theme-bg);
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-.icons i {
-  position: relative;
-  vertical-align: middle;
+input:checked ~ .icons .bi-moon-stars-fill,
+.bi-brightness-high-fill {
+  color: #30456a;
 }
-input:checked ~ .icons .bi-moon-stars-fill {
-  opacity: 1;
-}
-input:checked ~ .icons .bi-sun,
+input:checked ~ .icons .bi-brightness-high-fill,
 .bi-moon-stars-fill {
-  opacity: 0.25;
+  color: #93969c7b;
 }
 .icons i {
   position: relative;
   left: 0;
   bottom: 5px;
   padding: 2px;
+  cursor: pointer;
+}
+.theme-toggle {
+  margin: 20px auto;
 }
