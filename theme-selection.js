@@ -1,16 +1,13 @@
-const themeToggler = document.querySelector(".theme-toggle");
 const THEME_KEY = "website_theme";
 const DARK_MODE = "dark_mode";
 const DEFAULT_MODE = "default";
-const checkbox = document.querySelector("#checkbox");
 const CHECKBOX_KEY = "checkboxChecked";
+const checkbox = document.querySelector("#checkbox");
 
 function setTheme(theme, isChecked) {
   document.body.classList.remove(DARK_MODE, DEFAULT_MODE);
   document.body.classList.add(theme);
   checkbox.checked = isChecked;
-  localStorage.setItem(THEME_KEY, theme);
-  localStorage.setItem(CHECKBOX_KEY, String(isChecked));
 }
 
 function retrieveTheme() {
@@ -19,10 +16,12 @@ function retrieveTheme() {
   setTheme(theme, isChecked);
 }
 
-themeToggler.addEventListener("change", () => {
-  const isDark = document.body.classList.toggle(DARK_MODE);
+checkbox.addEventListener("change", () => {
   const isChecked = checkbox.checked;
-  setTheme(isDark ? DARK_MODE : DEFAULT_MODE, isChecked);
+  const theme = isChecked ? DARK_MODE : DEFAULT_MODE;
+  localStorage.setItem(THEME_KEY, theme);
+  localStorage.setItem(CHECKBOX_KEY, String(isChecked));
+  setTheme(theme, isChecked);
 });
 
 window.addEventListener("storage", retrieveTheme);
