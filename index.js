@@ -34,3 +34,15 @@ function operate(operator, a, b) {
 function updateDisplay() {
   display.value = state.display() || "0";
 }
+
+keys.addEventListener("click", (e) => {
+  const { target } = e;
+  if (!target.matches("button")) return;
+  if (target.classList.contains("num")) {
+    handleNumber(target.value);
+  } else if (target.classList.contains("operator")) {
+    handleOperator(target.value);
+  } else if (target.classList.contains("equal")) {
+    handleEqual();
+  }
+});
