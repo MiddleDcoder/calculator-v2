@@ -1,12 +1,12 @@
 /*  Main Calculator App */
 const state = {
-    firstOperand: null,
-    secondOperand: null,
-    operator: null,
-    display() {
-        return `${this.firstOperand || ''} ${this.operator || ''} ${this.secondOperand || ''}`.trim();
-    },
-}
+  firstOperand: null,
+  secondOperand: null,
+  operator: null,
+  display() {
+    return `${this.firstOperand || ""}${this.operator || ""}${this.secondOperand || "" }`;
+  },
+};
 
 const display = document.querySelector(".display");
 const keys = document.querySelector(".keys");
@@ -20,6 +20,17 @@ const percentage = document.querySelector(".percentage");
 const operations = {
   "+": (a, b) => a + b,
   "-": (a, b) => a - b,
-  "x": (a, b) => a * b,
+  x: (a, b) => a * b,
   "÷": (a, b) => a / b,
 };
+
+function operate(operator, a, b) {
+  if (operator in operations) {
+    return operations[operator](a, b);
+  }
+  return null;
+}
+
+function updateDisplay() {
+  display.value = state.display() || "0";
+}
