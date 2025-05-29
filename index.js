@@ -57,6 +57,15 @@ function handleOperator(value) {
   updateDisplay();
 }
 
+function handleEqual() {
+  if (state.firstOperand === null || state.secondOperand === null || !state.operator) return; // Incomplete operation
+  const result = operate(state.operator, parseFloat(state.firstOperand), parseFloat(state.secondOperand));
+  state.firstOperand = result;
+  state.secondOperand = null;
+  state.operator = null;
+  updateDisplay();
+}
+
 keys.addEventListener("click", (e) => {
   const { target } = e;
   if (!target.matches("button")) return;
