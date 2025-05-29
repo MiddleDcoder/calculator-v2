@@ -46,6 +46,17 @@ function handleNumber(num) {
   updateDisplay();
 }
 
+function handleOperator(value) {
+  if (state.firstOperand === null) return; // No first operand yet
+  if (state.secondOperand !== null) {
+    const result = operate(state.operator, parseFloat(state.firstOperand), parseFloat(state.secondOperand));
+    state.firstOperand = result;
+    state.secondOperand = null;
+  }
+  state.operator = value;
+  updateDisplay();
+}
+
 keys.addEventListener("click", (e) => {
   const { target } = e;
   if (!target.matches("button")) return;
