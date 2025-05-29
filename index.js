@@ -35,6 +35,17 @@ function updateDisplay() {
   display.value = state.display() || "0";
 }
 
+function handleNumber(num) {
+  if (state.operator) {
+    if (num === "0" && state.secondOperand === "0") return;
+    state.secondOperand = state.secondOperand ? state.secondOperand + num : num;
+  } else {
+    if (num === "0" && state.firstOperand === "0") return;
+    state.firstOperand = state.firstOperand ? state.firstOperand + num : num;
+  }
+  updateDisplay();
+}
+
 keys.addEventListener("click", (e) => {
   const { target } = e;
   if (!target.matches("button")) return;
