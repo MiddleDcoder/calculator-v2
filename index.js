@@ -74,21 +74,21 @@ function handleAllClear() {
 }
 
 function handleBack() {
-  if (state.secondOperand !== null) {
-    state.secondOperand = state.secondOperand.slice(0, -1);
-    if (state.secondOperand === "") {
-      state.secondOperand = null;
-    }
-  } else if (state.operator) {
-    state.operator = null;
-  } else if (state.firstOperand !== null) {
-    state.firstOperand = state.firstOperand.slice(0, -1);
-    if (state.firstOperand === "") {
-      state.firstOperand = null;
-    }
-  }
-  updateDisplay();
-}
+   if (state.secondOperand !== null) {
+    state.secondOperand = String(state.secondOperand).slice(0, -1);
+     if (state.secondOperand === "") {
+       state.secondOperand = null;
+     }
+   } else if (state.operator) {
+     state.operator = null;
+   } else if (state.firstOperand !== null) {
+    state.firstOperand = String(state.firstOperand).slice(0, -1);
+     if (state.firstOperand === "") {
+       state.firstOperand = null;
+     }
+   }
+   updateDisplay();
+ }
 
 keys.addEventListener("click", (e) => {
   const { target } = e;
