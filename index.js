@@ -66,6 +66,13 @@ function handleEqual() {
   updateDisplay();
 }
 
+function handleAllClear() {
+  state.firstOperand = null;
+  state.secondOperand = null;
+  state.operator = null;
+  updateDisplay();
+}
+
 keys.addEventListener("click", (e) => {
   const { target } = e;
   if (!target.matches("button")) return;
@@ -77,3 +84,6 @@ keys.addEventListener("click", (e) => {
     handleEqual();
   }
 });
+
+// Event listeners for additional buttons
+allClear.addEventListener("click", handleAllClear);
