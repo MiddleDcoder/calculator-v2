@@ -91,25 +91,14 @@ function handleBack() {
  }
  
 function handleDecimal() {
-  if (state.operator) {
-    if (state.secondOperand) {
-      if (!state.secondOperand.includes(".")) {
-        state.secondOperand += ".";
-      }
-    } else {
-      state.secondOperand = "0.";
-    }
-  } else {
-    if (state.firstOperand) {
-      if (!state.firstOperand.includes(".")) {
-        state.firstOperand += ".";
-      }
-    } else {
-      state.firstOperand = "0.";
-    }
-   }
-   updateDisplay();
- }
+  const operandKey = state.operator ? 'secondOperand' : 'firstOperand';
+  if (!state[operandKey]) {
+    state[operandKey] = "0.";
+  } else if (!state[operandKey].includes(".")) {
+    state[operandKey] += ".";
+  }
+  updateDisplay();
+}
 
 
 keys.addEventListener("click", (e) => {
