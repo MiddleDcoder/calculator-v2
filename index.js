@@ -89,6 +89,16 @@ function handleBack() {
    }
    updateDisplay();
  }
+ 
+ function handleDecimal() {
+   if (state.operator && state.secondOperand && !state.secondOperand.includes(".")) {
+     state.secondOperand += ".";
+   } else if (!state.operator && state.firstOperand && !state.firstOperand.includes(".")) {
+     state.firstOperand += ".";
+   }
+   updateDisplay();
+ }
+
 
 keys.addEventListener("click", (e) => {
   const { target } = e;
@@ -106,3 +116,5 @@ keys.addEventListener("click", (e) => {
 allClear.addEventListener("click", handleAllClear);
 
 back.addEventListener("click", handleBack);
+
+decimal.addEventListener("click", handleDecimal);
