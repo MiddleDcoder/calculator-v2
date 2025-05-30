@@ -4,7 +4,9 @@ const state = {
   secondOperand: null,
   operator: null,
   display() {
-    return `${this.firstOperand || ""}${this.operator || ""}${this.secondOperand || "" }`;
+    return `${this.firstOperand || ""}${this.operator || ""}${
+      this.secondOperand || ""
+    }`;
   },
 };
 
@@ -49,7 +51,11 @@ function handleNumber(num) {
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
   if (state.secondOperand !== null) {
-    const result = operate(state.operator, parseFloat(state.firstOperand), parseFloat(state.secondOperand));
+    const result = operate(
+      state.operator,
+      parseFloat(state.firstOperand),
+      parseFloat(state.secondOperand)
+    );
     state.firstOperand = result;
     state.secondOperand = null;
   }
@@ -58,8 +64,17 @@ function handleOperator(value) {
 }
 
 function handleEqual() {
-  if (state.firstOperand === null || state.secondOperand === null || !state.operator) return; // Incomplete operation
-  const result = operate(state.operator, parseFloat(state.firstOperand), parseFloat(state.secondOperand));
+  if (
+    state.firstOperand === null ||
+    state.secondOperand === null ||
+    !state.operator
+  )
+    return; // Incomplete operation
+  const result = operate(
+    state.operator,
+    parseFloat(state.firstOperand),
+    parseFloat(state.secondOperand)
+  );
   state.firstOperand = result;
   state.secondOperand = null;
   state.operator = null;
@@ -74,24 +89,24 @@ function handleAllClear() {
 }
 
 function handleBack() {
-   if (state.secondOperand !== null) {
+  if (state.secondOperand !== null) {
     state.secondOperand = String(state.secondOperand).slice(0, -1);
-     if (state.secondOperand === "") {
-       state.secondOperand = null;
-     }
-   } else if (state.operator) {
-     state.operator = null;
-   } else if (state.firstOperand !== null) {
+    if (state.secondOperand === "") {
+      state.secondOperand = null;
+    }
+  } else if (state.operator) {
+    state.operator = null;
+  } else if (state.firstOperand !== null) {
     state.firstOperand = String(state.firstOperand).slice(0, -1);
-     if (state.firstOperand === "") {
-       state.firstOperand = null;
-     }
-   }
-   updateDisplay();
- }
- 
+    if (state.firstOperand === "") {
+      state.firstOperand = null;
+    }
+  }
+  updateDisplay();
+}
+
 function handleDecimal() {
-  const operandKey = state.operator ? 'secondOperand' : 'firstOperand';
+  const operandKey = state.operator ? "secondOperand" : "firstOperand";
   if (!state[operandKey]) {
     state[operandKey] = "0.";
   } else if (!state[operandKey].includes(".")) {
@@ -100,7 +115,7 @@ function handleDecimal() {
   updateDisplay();
 }
 
-
+// Event listeners for number buttons
 keys.addEventListener("click", (e) => {
   const { target } = e;
   if (!target.matches("button")) return;
