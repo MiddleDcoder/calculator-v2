@@ -90,11 +90,23 @@ function handleBack() {
    updateDisplay();
  }
  
- function handleDecimal() {
-   if (state.operator && state.secondOperand && !state.secondOperand.includes(".")) {
-     state.secondOperand += ".";
-   } else if (!state.operator && state.firstOperand && !state.firstOperand.includes(".")) {
-     state.firstOperand += ".";
+function handleDecimal() {
+  if (state.operator) {
+    if (state.secondOperand) {
+      if (!state.secondOperand.includes(".")) {
+        state.secondOperand += ".";
+      }
+    } else {
+      state.secondOperand = "0.";
+    }
+  } else {
+    if (state.firstOperand) {
+      if (!state.firstOperand.includes(".")) {
+        state.firstOperand += ".";
+      }
+    } else {
+      state.firstOperand = "0.";
+    }
    }
    updateDisplay();
  }
