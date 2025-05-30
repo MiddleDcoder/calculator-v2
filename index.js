@@ -88,19 +88,23 @@ function handleAllClear() {
   updateDisplay();
 }
 
+/**
+ * Handles the backspace action for a calculator state.
+ * Removes the last character from the current operand or operator,
+ * and updates the display accordingly.
+ */
 function handleBack() {
+  const removeLastChar = (val) => {
+    const str = String(val).slice(0, -1);
+    return str === "" ? null : str;
+  };
+
   if (state.secondOperand !== null) {
-    state.secondOperand = String(state.secondOperand).slice(0, -1);
-    if (state.secondOperand === "") {
-      state.secondOperand = null;
-    }
+    state.secondOperand = removeLastChar(state.secondOperand);
   } else if (state.operator) {
     state.operator = null;
   } else if (state.firstOperand !== null) {
-    state.firstOperand = String(state.firstOperand).slice(0, -1);
-    if (state.firstOperand === "") {
-      state.firstOperand = null;
-    }
+    state.firstOperand = removeLastChar(state.firstOperand);
   }
   updateDisplay();
 }
