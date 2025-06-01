@@ -122,7 +122,10 @@ function handleDecimal() {
 function handleSign() {
   const operandKey = state.operator ? "secondOperand" : "firstOperand";
   if (state[operandKey] !== null) {
-    state[operandKey] = String(parseFloat(state[operandKey]) * -1);
+    const numValue = parseFloat(state[operandKey]);
+    if (!isNaN(numValue)) {
+      state[operandKey] = String(numValue * -1);
+    }
     updateDisplay();
   }
 }
