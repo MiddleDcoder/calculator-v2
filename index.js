@@ -119,13 +119,15 @@ function handleDecimal() {
   updateDisplay();
 }
 
+function toggleSign(value) {
+  const numValue = parseFloat(value);
+  return !isNaN(numValue) ? String(numValue * -1) : value;
+}
+
 function handleSign() {
   const operandKey = state.operator ? "secondOperand" : "firstOperand";
   if (state[operandKey] !== null) {
-    const numValue = parseFloat(state[operandKey]);
-    if (!isNaN(numValue)) {
-      state[operandKey] = String(numValue * -1);
-    }
+    state[operandKey] = toggleSign(state[operandKey]);
     updateDisplay();
   }
 }
