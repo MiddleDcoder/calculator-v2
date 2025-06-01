@@ -121,7 +121,7 @@ function handleDecimal() {
 
 function toggleSign(value) {
   const numValue = parseFloat(value);
-  return !isNaN(numValue) ? String(numValue * -1) : value;
+  return Number.isFinite(numValue) ? String(numValue * -1) : value;
 }
 
 function handleSign() {
