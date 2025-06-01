@@ -119,6 +119,14 @@ function handleDecimal() {
   updateDisplay();
 }
 
+function handleSign() {
+  const operandKey = state.operator ? "secondOperand" : "firstOperand";
+  if (state[operandKey] !== null) {
+    state[operandKey] = String(parseFloat(state[operandKey]) * -1);
+    updateDisplay();
+  }
+}
+
 // Event listeners for number buttons
 keys.addEventListener("click", (e) => {
   const { target } = e;
@@ -138,3 +146,5 @@ allClear.addEventListener("click", handleAllClear);
 back.addEventListener("click", handleBack);
 
 decimal.addEventListener("click", handleDecimal);
+
+sign.addEventListener("click", handleSign);

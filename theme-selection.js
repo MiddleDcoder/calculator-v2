@@ -19,6 +19,7 @@ function retrieveTheme() {
 checkbox.addEventListener("change", () => {
   const isChecked = checkbox.checked;
   const theme = isChecked ? DARK_MODE : DEFAULT_MODE;
+  
   localStorage.setItem(THEME_KEY, theme);
   localStorage.setItem(CHECKBOX_KEY, String(isChecked));
   applyTheme(theme, isChecked);
