@@ -81,6 +81,11 @@ function handleEqual() {
   updateDisplay();
 }
 
+function hasMoreThanTwoDecimals(value) {
+  const parts = String(value).split(".");
+  return parts.length > 1 && parts[1].length > 2;
+}
+
 function handleAllClear() {
   state.firstOperand = null;
   state.secondOperand = null;
