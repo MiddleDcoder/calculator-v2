@@ -82,8 +82,8 @@ function handleEqual() {
 }
 
 function hasMoreThanTwoDecimals(value) {
-  const parts = String(value).split(".");
-  return parts.length > 1 && parts[1].length > 2;
+  const [, decimals = ""] = String(value).split(".");
+  return decimals.length > 2;
 }
 
 function handleAllClear() {
