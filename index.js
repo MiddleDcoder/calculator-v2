@@ -76,11 +76,9 @@ function handleEqual() {
     parseFloat(state.firstOperand),
     parseFloat(state.secondOperand)
   );
-  if (hasMoreThanTwoDecimals(result)) {
-    state.firstOperand = result.toFixed(2);
-  } else {
-    state.firstOperand = result;
-  }
+  state.firstOperand = hasMoreThanTwoDecimals(result)
+    ? result.toFixed(2)
+    : result;
   state.secondOperand = null;
   state.operator = null;
   updateDisplay();
