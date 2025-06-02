@@ -70,12 +70,17 @@ function handleEqual() {
     !state.operator
   )
     return; // Incomplete operation
+
   const result = operate(
     state.operator,
     parseFloat(state.firstOperand),
     parseFloat(state.secondOperand)
   );
-  state.firstOperand = result;
+  if (hasMoreThanTwoDecimals(result)) {
+    state.firstOperand = result.toFixed(2);
+  } else {
+    state.firstOperand = result;
+  }
   state.secondOperand = null;
   state.operator = null;
   updateDisplay();
