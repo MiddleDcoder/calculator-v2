@@ -142,6 +142,14 @@ function handleSign() {
   }
 }
 
+function addPercentage() {
+  const operandKey = state.operator ? "secondOperand" : "firstOperand";
+  if (state[operandKey] !== null) {
+    state[operandKey] += "%";
+    updateDisplay();
+  }
+}
+
 // Event listeners for number buttons
 keys.addEventListener("click", (e) => {
   const { target } = e;
@@ -163,3 +171,5 @@ back.addEventListener("click", handleBack);
 decimal.addEventListener("click", handleDecimal);
 
 sign.addEventListener("click", handleSign);
+
+percentage.addEventListener("click", addPercentage);
