@@ -150,6 +150,18 @@ function addPercentage() {
   }
 }
 
+function toPercentage(a, b) {
+  if (a.endsWith("%")) {
+    return (parseFloat(a) / 100).toString();
+  }
+  if (a.endsWith("%") && b.endsWith("%")) {
+    return (parseFloat(b) / 100).toString();
+  }
+  if (!a.endsWith("%") && b.endsWith("%")) {
+    return ((parseFloat(b) / 100) * parseFloat(a)).toString();
+  }
+}
+
 // Event listeners for number buttons
 keys.addEventListener("click", (e) => {
   const { target } = e;
