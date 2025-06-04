@@ -161,13 +161,11 @@ function addPercentage() {
     updateDisplay();
   }
 }
-
 function toPercentage(value) {
-  if (
-    value === state.secondOperand &&
-    value.endsWith("%") &&
-    !state.firstOperand.includes("%")
-  ) {
+  const isSecondOperand = value === state.secondOperand;
+  const firstOperandHasNoPercentage = !state.firstOperand.includes("%");
+
+  if (isSecondOperand && firstOperandHasNoPercentage) {
     return (
       (parseFloat(value) / 100) *
       parseFloat(state.firstOperand)
@@ -177,14 +175,12 @@ function toPercentage(value) {
 }
 
 function filterPercentage(a, b) {
-  if (a.includes("%") && !b.includes("%")) {
-    a = toPercentage(a);
-  } else if (a.includes("%") && b.includes("%")) {
-    a = toPercentage(a);
-    b = toPercentage(b);
-  } else if (b.includes("%") && !a.includes("%")) {
-    b = toPercentage(b);
-  }
+  const aIsPercentage = a.includes("%");
+  const bIsPercentage = b.includes("%");
+
+  if (aIsPercentage) a = toPercentage(a);
+  if (bIsPercentage) b = toPercentage(b);
+
   return [a, b];
 }
 
