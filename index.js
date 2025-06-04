@@ -56,7 +56,7 @@ function handleOperator(value) {
       state.firstOperand,
       state.secondOperand
     );
-
+    // If there's an existing operator, calculate the result
     const result = operate(
       state.operator,
       parseFloat(state.firstOperand),
@@ -84,7 +84,7 @@ function handleEqual() {
     state.firstOperand,
     state.secondOperand
   );
-
+  // Perform the operation
   const result = operate(
     state.operator,
     parseFloat(state.firstOperand),
