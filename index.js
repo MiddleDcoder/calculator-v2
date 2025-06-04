@@ -163,6 +163,16 @@ function addPercentage() {
 }
 
 function toPercentage(value) {
+  if (
+    value === state.secondOperand &&
+    value.endsWith("%") &&
+    !state.firstOperand.includes("%")
+  ) {
+    return (
+      (parseFloat(value) / 100) *
+      parseFloat(state.firstOperand)
+    ).toString();
+  }
   return (parseFloat(value) / 100).toString();
 }
 
