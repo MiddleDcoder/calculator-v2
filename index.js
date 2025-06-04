@@ -73,6 +73,12 @@ function handleEqual() {
   )
     return; // Incomplete operation
 
+  // Filter for percentage
+  [state.firstOperand, state.secondOperand] = filterPercentage(
+    state.firstOperand,
+    state.secondOperand
+  );
+
   const result = operate(
     state.operator,
     parseFloat(state.firstOperand),
@@ -150,16 +156,20 @@ function addPercentage() {
   }
 }
 
-function toPercentage(a, b) {
-  if (a.endsWith("%")) {
-    return (parseFloat(a) / 100).toString();
+function toPercentage(value) {
+  return (parseFloat(value) / 100).toString();
+}
+
+function filterPercentage(a, b) {
+  if (a.includes("%") && !b.includes("%")) {
+    a = toPercentage(a);
+  } else if (a.includes("%") && b.includes("%")) {
+    a = toPercentage(a);
+    b = toPercentage(b);
+  } else if (b.includes("%") && !a.includes("%")) {
+    b = toPercentage(b);
   }
-  if (a.endsWith("%") && b.endsWith("%")) {
-    return (parseFloat(b) / 100).toString();
-  }
-  if (!a.endsWith("%") && b.endsWith("%")) {
-    return ((parseFloat(b) / 100) * parseFloat(a)).toString();
-  }
+  return [a, b];
 }
 
 // Event listeners for number buttons
