@@ -27,10 +27,7 @@ const operations = {
 };
 
 function operate(operator, a, b) {
-  if (operator in operations) {
-    return operations[operator](a, b);
-  }
-  return null;
+  return operations[operator] ? operations[operator](a, b) : null;
 }
 
 function updateDisplay() {
