@@ -156,7 +156,7 @@ function handleSign() {
 
 function addPercentage() {
   const operandKey = state.operator ? "secondOperand" : "firstOperand";
-  if (state[operandKey] !== null) {
+  if (state[operandKey] !== null && !state[operandKey].includes("%")) {
     state[operandKey] += "%";
     updateDisplay();
   }
