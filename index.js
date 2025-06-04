@@ -51,6 +51,12 @@ function handleNumber(num) {
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
   if (state.secondOperand !== null) {
+    // Filter for percentage
+    [state.firstOperand, state.secondOperand] = filterPercentage(
+      state.firstOperand,
+      state.secondOperand
+    );
+
     const result = operate(
       state.operator,
       parseFloat(state.firstOperand),
