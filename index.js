@@ -46,6 +46,10 @@ function updateDisplay() {
   display.value = state.display() || "0";
 }
 
+function updateHistory() {
+  historyDisplay.value = history.display() || "";
+}
+
 function handleNumber(num) {
   if (state.operator) {
     if (num === "0" && state.secondOperand === "0") return;
