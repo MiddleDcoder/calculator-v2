@@ -47,7 +47,7 @@ function updateDisplay() {
 }
 
 function updateHistory() {
-  historyDisplay.value = history.display() || "";
+  historyDisplay.textContent = history.display() || "";
 }
 
 function handleNumber(num) {
@@ -92,11 +92,17 @@ function handleEqual() {
   )
     return; // Incomplete operation
 
+  // Save the current state to history
+  history.firstOperand = state.firstOperand;
+  history.secondOperand = state.secondOperand;
+  history.operator = state.operator;
+  updateHistory();
   // Filter for percentage
   [state.firstOperand, state.secondOperand] = filterPercentage(
     state.firstOperand,
     state.secondOperand
   );
+
   // Perform the operation
   const result = operate(
     state.operator,
