@@ -126,6 +126,10 @@ function handleAllClear() {
   state.firstOperand = null;
   state.secondOperand = null;
   state.operator = null;
+
+  // Clear history
+  clearHistory();
+
   updateDisplay();
 }
 
