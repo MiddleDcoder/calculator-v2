@@ -203,6 +203,14 @@ function filterPercentage(a, b) {
   return [a, b];
 }
 
+function getHistory() {
+  if (history.firstOperand === null) return;
+  state.firstOperand = history.firstOperand;
+  state.secondOperand = history.secondOperand;
+  state.operator = history.operator;
+  updateDisplay();
+}
+
 // Event listeners for number buttons
 keys.addEventListener("click", (e) => {
   const { target } = e;
@@ -226,3 +234,5 @@ decimal.addEventListener("click", handleDecimal);
 sign.addEventListener("click", handleSign);
 
 percentage.addEventListener("click", addPercentage);
+
+historyDisplay.addEventListener("click", getHistory);
