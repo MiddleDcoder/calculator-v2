@@ -64,6 +64,8 @@ function handleNumber(num) {
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
   if (state.secondOperand !== null) {
+    saveToHistory();
+
     // Filter for percentage
     [state.firstOperand, state.secondOperand] = filterPercentage(
       state.firstOperand,
@@ -93,10 +95,8 @@ function handleEqual() {
     return; // Incomplete operation
 
   // Save the current state to history
-  history.firstOperand = state.firstOperand;
-  history.secondOperand = state.secondOperand;
-  history.operator = state.operator;
-  updateHistory();
+  saveToHistory();
+
   // Filter for percentage
   [state.firstOperand, state.secondOperand] = filterPercentage(
     state.firstOperand,
@@ -201,6 +201,14 @@ function filterPercentage(a, b) {
   if (bIsPercentage) b = toPercentage(b);
 
   return [a, b];
+}
+
+function saveToHistory() {
+  // Save the current state to history
+  history.firstOperand = state.firstOperand;
+  history.secondOperand = state.secondOperand;
+  history.operator = state.operator;
+  updateHistory();
 }
 
 function loadHistory() {
