@@ -68,8 +68,8 @@ function handleOperator(value) {
 
     // Filter for percentage
     [state.firstOperand, state.secondOperand] = filterPercentage(
-      state.firstOperand,
-      state.secondOperand
+      String(state.firstOperand),
+      String(state.secondOperand)
     );
     // If there's an existing operator, calculate the result
     const result = operate(
@@ -99,8 +99,8 @@ function handleEqual() {
 
   // Filter for percentage
   [state.firstOperand, state.secondOperand] = filterPercentage(
-    state.firstOperand,
-    state.secondOperand
+    String(state.firstOperand),
+    String(state.secondOperand)
   );
 
   // Perform the operation
