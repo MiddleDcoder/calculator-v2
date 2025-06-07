@@ -67,10 +67,7 @@ function handleOperator(value) {
     saveToHistory();
 
     // Filter for percentage
-    [state.firstOperand, state.secondOperand] = filterPercentage(
-      String(state.firstOperand),
-      String(state.secondOperand)
-    );
+    convertPercentageValues();
     // If there's an existing operator, calculate the result
     const result = operate(
       state.operator,
@@ -98,10 +95,7 @@ function handleEqual() {
   saveToHistory();
 
   // Filter for percentage
-  [state.firstOperand, state.secondOperand] = filterPercentage(
-    String(state.firstOperand),
-    String(state.secondOperand)
-  );
+  convertPercentageValues();
 
   // Perform the operation
   const result = operate(
@@ -115,6 +109,13 @@ function handleEqual() {
   state.secondOperand = null;
   state.operator = null;
   updateDisplay();
+}
+
+function convertPercentageValues() {
+  [state.firstOperand, state.secondOperand] = filterPercentage(
+    String(state.firstOperand),
+    String(state.secondOperand)
+  );
 }
 
 function hasMoreThanTwoDecimals(value) {
