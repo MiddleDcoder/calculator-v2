@@ -69,7 +69,8 @@ function handleNumber(num) {
 
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
-  clearHistoryIfComingFromResult();
+  if (state.result) clearHistoryIfComingFromResult();
+
   if (state.secondOperand !== null) {
     saveToHistory();
 
@@ -92,11 +93,9 @@ function handleOperator(value) {
 }
 
 function clearHistoryIfComingFromResult() {
-  if (state.result) {
-    state.result = null;
-    clearHistory();
-    updateHistory();
-  }
+  state.result = null;
+  clearHistory();
+  updateHistory();
 }
 
 function handleEqual() {
