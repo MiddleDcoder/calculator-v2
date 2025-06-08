@@ -83,7 +83,7 @@ function handleOperator(value) {
     state.firstOperand = hasMoreThanTwoDecimals(result)
       ? result.toFixed(2)
       : result;
-    state.result = state.firstOperand; // Save result for potential future use
+    state.result = state.firstOperand;
     state.secondOperand = null;
   }
   state.operator = value;
@@ -113,6 +113,7 @@ function handleEqual() {
   state.firstOperand = hasMoreThanTwoDecimals(result)
     ? result.toFixed(2)
     : result;
+  state.result = state.firstOperand; // Save result for potential future use
   state.secondOperand = null;
   state.operator = null;
   updateDisplay();
