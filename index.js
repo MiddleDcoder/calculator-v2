@@ -56,9 +56,13 @@ function handleNumber(num) {
     if (num === "0" && state.secondOperand === "0") return;
     state.secondOperand = state.secondOperand ? state.secondOperand + num : num;
   } else {
-    clearHistoryIfComingFromResult();
-    if (num === "0" && state.firstOperand === "0") return;
-    state.firstOperand = state.firstOperand ? state.firstOperand + num : num;
+    if (state.result !== null) {
+      clearHistoryIfComingFromResult();
+      state.firstOperand = num;
+    } else {
+      if (num === "0" && state.firstOperand === "0") return;
+      state.firstOperand = state.firstOperand ? state.firstOperand + num : num;
+    }
   }
   updateDisplay();
 }
