@@ -8,6 +8,7 @@ const state = {
       this.secondOperand || ""
     }`;
   },
+  result: null,
 };
 
 const history = {
@@ -63,6 +64,11 @@ function handleNumber(num) {
 
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
+  if (state.result) {
+    state.result = null;
+    clearHistory();
+    updateHistory();
+  }
   if (state.secondOperand !== null) {
     saveToHistory();
 
@@ -77,6 +83,7 @@ function handleOperator(value) {
     state.firstOperand = hasMoreThanTwoDecimals(result)
       ? result.toFixed(2)
       : result;
+    state.result = state.firstOperand; // Save result for potential future use
     state.secondOperand = null;
   }
   state.operator = value;
