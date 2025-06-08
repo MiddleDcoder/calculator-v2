@@ -56,6 +56,7 @@ function handleNumber(num) {
     if (num === "0" && state.secondOperand === "0") return;
     state.secondOperand = state.secondOperand ? state.secondOperand + num : num;
   } else {
+    clearHistoryIfComingFromResult();
     if (num === "0" && state.firstOperand === "0") return;
     state.firstOperand = state.firstOperand ? state.firstOperand + num : num;
   }
@@ -64,11 +65,7 @@ function handleNumber(num) {
 
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
-  if (state.result) {
-    state.result = null;
-    clearHistory();
-    updateHistory();
-  }
+  clearHistoryIfComingFromResult();
   if (state.secondOperand !== null) {
     saveToHistory();
 
@@ -88,6 +85,14 @@ function handleOperator(value) {
   }
   state.operator = value;
   updateDisplay();
+}
+
+function clearHistoryIfComingFromResult() {
+  if (state.result) {
+    state.result = null;
+    clearHistory();
+    updateHistory();
+  }
 }
 
 function handleEqual() {
