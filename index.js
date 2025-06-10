@@ -273,3 +273,25 @@ sign.addEventListener("click", handleSign);
 percentage.addEventListener("click", addPercentage);
 
 historyDisplay.addEventListener("click", loadHistory);
+
+// Keyboard event listeners
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+  if (key >= "0" && key <= "9") {
+    handleNumber(key);
+  } else if (key === ".") {
+    handleDecimal();
+  } else if (key === "Enter" || key === "=") {
+    handleEqual();
+  } else if (key === "Backspace") {
+    handleBack();
+  } else if (key === "Escape") {
+    handleAllClear();
+  } else if (["+", "-", "*", "/"].includes(key)) {
+    handleOperator(key.replace("*", "x").replace("/", "÷"));
+  } else if (key === "%") {
+    addPercentage();
+  } else if (key === "Sign") {
+    handleSign();
+  }
+});
