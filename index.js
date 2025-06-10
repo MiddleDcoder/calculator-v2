@@ -40,7 +40,21 @@ const operations = {
 };
 
 function operate(operator, a, b) {
-  return operations[operator] ? operations[operator](a, b) : null;
+  if (!operations[operator]) return null;
+
+  // Check for division by zero
+  if (operator === "÷" && b === 0) {
+    return "-_-";
+  }
+
+  const result = operations[operator](a, b);
+
+  // Check for invalid results
+  if (!Number.isFinite(result)) {
+    return Infinity;
+  }
+
+  return result;
 }
 
 function updateDisplay() {
