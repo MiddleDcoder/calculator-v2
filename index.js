@@ -67,14 +67,22 @@ function updateHistory() {
 
 function handleNumber(num) {
   if (state.operator) {
-    if (num === "0" && state.secondOperand === "0") return;
+    if (
+      (num === "0" && state.secondOperand === "0") ||
+      (state.secondOperand && state.secondOperand.includes("%"))
+    )
+      return;
     state.secondOperand = state.secondOperand ? state.secondOperand + num : num;
   } else {
     if (state.result !== null) {
       clearHistoryIfComingFromResult();
       state.firstOperand = num;
     } else {
-      if (num === "0" && state.firstOperand === "0") return;
+      if (
+        (num === "0" && state.firstOperand === "0") ||
+        (state.firstOperand && state.firstOperand.includes("%"))
+      )
+        return;
       state.firstOperand = state.firstOperand ? state.firstOperand + num : num;
     }
   }
