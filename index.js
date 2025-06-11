@@ -193,8 +193,12 @@ function handleBack() {
   updateDisplay();
 }
 
+function getCurrentOperandKey() {
+  return state.operator ? "secondOperand" : "firstOperand";
+}
+
 function handleDecimal() {
-  const operandKey = state.operator ? "secondOperand" : "firstOperand";
+  const operandKey = getCurrentOperandKey();
   if (!state[operandKey]) {
     state[operandKey] = "0.";
   } else if (!state[operandKey].includes(".")) {
@@ -209,7 +213,7 @@ function toggleSign(value) {
 }
 
 function handleSign() {
-  const operandKey = state.operator ? "secondOperand" : "firstOperand";
+  const operandKey = getCurrentOperandKey();
   if (state[operandKey] !== null) {
     state[operandKey] = toggleSign(state[operandKey]);
     updateDisplay();
