@@ -94,6 +94,12 @@ function handleNumber(num) {
   updateDisplay();
 }
 
+/**
+ * Handles operator input by managing calculation state and performing operations.
+ * Clears history if coming from a result, saves current state to history,
+ * calculates pending operations, and updates the display.
+ * @param {string} value - The operator symbol to set
+ */
 function handleOperator(value) {
   if (state.firstOperand === null) return; // No first operand yet
   if (state.result) clearHistoryIfComingFromResult();
@@ -125,6 +131,11 @@ function clearHistoryIfComingFromResult() {
   updateHistory();
 }
 
+/**
+ * Handles the equals operation by performing the calculation and updating the calculator state.
+ * Saves current state to history, converts percentage values, performs the operation,
+ * and updates the display with the result.
+ */
 function handleEqual() {
   if (
     state.firstOperand === null ||
