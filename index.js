@@ -65,6 +65,11 @@ function updateHistory() {
   historyDisplay.textContent = history.display() || "";
 }
 
+/**
+ * Handles numeric input for the calculator, updating either the first or second operand
+ * based on current state. Prevents invalid inputs like leading zeros and percentage conflicts.
+ * @param {string} num - The numeric digit to add to the current operand
+ */
 function handleNumber(num) {
   if (state.operator) {
     if (
