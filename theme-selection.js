@@ -10,8 +10,12 @@ function applyTheme(theme, isChecked) {
   checkbox.checked = isChecked;
 }
 
+/**
+ * Retrieves the user's theme and checkbox state from localStorage,
+ * then applies the theme using applyTheme.
+ */
 function retrieveTheme() {
-  const theme = localStorage.getItem(THEME_KEY) || DEFAULT_MODE;
+  const theme = localStorage.getItem(THEME_KEY) ?? DEFAULT_MODE;
   const isChecked = localStorage.getItem(CHECKBOX_KEY) === "true";
   applyTheme(theme, isChecked);
 }
@@ -19,7 +23,7 @@ function retrieveTheme() {
 checkbox.addEventListener("change", () => {
   const isChecked = checkbox.checked;
   const theme = isChecked ? DARK_MODE : DEFAULT_MODE;
-  
+
   localStorage.setItem(THEME_KEY, theme);
   localStorage.setItem(CHECKBOX_KEY, String(isChecked));
   applyTheme(theme, isChecked);
