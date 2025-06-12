@@ -4,6 +4,14 @@ const DEFAULT_MODE = "default";
 const CHECKBOX_KEY = "checkboxChecked";
 const checkbox = document.querySelector("#checkbox");
 
+/**
+ * Applies the specified theme to the document body and updates the checkbox state.
+ *
+ * Removes existing theme classes, adds the new theme class, and sets the checkbox to reflect the current theme selection.
+ *
+ * @param {string} theme - The theme class to apply (e.g., DARK_MODE or DEFAULT_MODE).
+ * @param {boolean} isChecked - Whether the checkbox should be checked.
+ */
 function applyTheme(theme, isChecked) {
   document.body.classList.remove(DARK_MODE, DEFAULT_MODE);
   document.body.classList.add(theme);
