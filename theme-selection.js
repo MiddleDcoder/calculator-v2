@@ -28,6 +28,7 @@ function retrieveTheme() {
   applyTheme(theme, isChecked);
 }
 
+// Set the initial theme based on localStorage or default to DEFAULT_MODE
 checkbox.addEventListener("change", () => {
   const isChecked = checkbox.checked;
   const theme = isChecked ? DARK_MODE : DEFAULT_MODE;
@@ -37,6 +38,7 @@ checkbox.addEventListener("change", () => {
   applyTheme(theme, isChecked);
 });
 
+// Listen for storage changes to update the theme if it changes in another tab
 window.addEventListener("storage", retrieveTheme);
 
 retrieveTheme();
