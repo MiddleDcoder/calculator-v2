@@ -19,10 +19,13 @@
 }
 body {
   display: flex;
+  flex-direction: column;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
 .calculator {
   background-color: var(--cal-bg);
   width: 315px;
