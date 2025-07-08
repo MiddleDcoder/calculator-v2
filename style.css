@@ -29,6 +29,7 @@ h2 {
   font-size: 3rem;
   font-weight: bold;
   font-family: math;
+  text-decoration: underline #30456a;
 }
 .calculator {
   background-color: var(--cal-bg);
