@@ -44,7 +44,7 @@ function operate(operator, a, b) {
 
   // Check for division by zero
   if (operator === "÷" && b === 0) {
-    return "-_-";
+    return NaN;
   }
 
   const result = operations[operator](a, b);
