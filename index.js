@@ -58,7 +58,7 @@ function operate(operator, a, b) {
 }
 
 function updateDisplay() {
-  display.value = state.display() || "0";
+  if (display) display.value = state.display() || "0";
 }
 
 function updateHistory() {
