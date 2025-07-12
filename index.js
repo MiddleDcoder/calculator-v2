@@ -304,17 +304,12 @@ keys.addEventListener("click", (e) => {
 });
 
 // Event listeners for additional buttons
-allClear.addEventListener("click", handleAllClear);
-
-back.addEventListener("click", handleBack);
-
-decimal.addEventListener("click", handleDecimal);
-
-sign.addEventListener("click", handleSign);
-
-percentage.addEventListener("click", addPercentage);
-
-historyDisplay.addEventListener("click", loadHistory);
+allClear?.addEventListener("click", handleAllClear);
+back?.addEventListener("click", handleBack);
+decimal?.addEventListener("click", handleDecimal);
+sign?.addEventListener("click", handleSign);
+percentage?.addEventListener("click", addPercentage);
+historyDisplay?.addEventListener("click", loadHistory);
 
 // Keyboard event listeners
 document.addEventListener("keydown", (e) => {
