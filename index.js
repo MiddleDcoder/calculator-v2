@@ -62,7 +62,7 @@ function updateDisplay() {
 }
 
 function updateHistory() {
-  historyDisplay.textContent = history.display() || "";
+  if (historyDisplay) historyDisplay.textContent = history.display() || "";
 }
 
 /**
