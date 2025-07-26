@@ -1,4 +1,4 @@
-# Calculator with UI
+# Calculator version 2 with UI
 [Calculator Difference Approach](https://middledcoder.github.io/calculator-v2/)
 With UI and Light/Dark mode theme.
 
