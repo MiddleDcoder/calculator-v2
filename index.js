@@ -1,4 +1,7 @@
-/*  Main Calculator App */
+/**
+ * Initializes the main calculator state object, holding values for the current operands, operator, and result.
+ * This state is referenced and updated throughout calculator operations to manage user input and calculations.
+ */
 const state = {
   firstOperand: null,
   secondOperand: null,
